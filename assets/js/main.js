@@ -182,4 +182,37 @@
 
 			});
 
+	// Web3Forms Contact Form
+		$('#contact_form').on('submit', function(e) {
+			e.preventDefault();
+
+			var form = document.getElementById('contact_form');
+			var formData = new FormData(form);
+
+			$('#btn_submit').hide();
+			$('#btn_sending').show();
+			$('#form_success, #form_error').hide();
+
+			fetch('https://api.web3forms.com/submit', {
+				method: 'POST',
+				body: formData
+			})
+			.then(function(response) { return response.json(); })
+			.then(function(data) {
+				$('#btn_submit').show();
+				$('#btn_sending').hide();
+				if (data.success) {
+					$('#form_success').show();
+					form.reset();
+				} else {
+					$('#form_error').show();
+				}
+			})
+			.catch(function() {
+				$('#btn_submit').show();
+				$('#btn_sending').hide();
+				$('#form_error').show();
+			});
+		});
+
 })(jQuery);

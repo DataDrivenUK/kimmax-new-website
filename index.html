@@ -202,21 +202,27 @@
 						<div class="inner">
 							<section>
 								<h2>Get in touch</h2>
-								<form method="post" action="#">
+								<form id="contact_form" method="post" action="#">
+									<input type="hidden" name="access_key" value="83805e2f-8ebb-4900-b2cc-b1165ac3719f">
+									<input type="hidden" name="subject" value="New enquiry from Kimmax.co.uk">
+									<input type="hidden" name="from_name" value="Kimmax Website">
 									<div class="fields">
 										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
+											<input type="text" name="name" id="name" placeholder="Name" required />
 										</div>
 										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
+											<input type="email" name="email" id="email" placeholder="Email" required />
 										</div>
 										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
+											<textarea name="message" id="message" placeholder="Message" required></textarea>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
+										<li><input type="submit" id="btn_submit" value="Send" class="primary" /></li>
+										<li><span id="btn_sending" style="display:none; line-height:2.5em;">Sending&hellip;</span></li>
 									</ul>
+									<p id="form_success" style="display:none; color:#a8dba8;">Thank you — we'll be in touch soon!</p>
+									<p id="form_error" style="display:none; color:#e88;">Something went wrong — please email us directly at <a href="mailto:peter@kimmax.co.uk">peter@kimmax.co.uk</a></p>
 								</form>
 							</section>
 							<section>
