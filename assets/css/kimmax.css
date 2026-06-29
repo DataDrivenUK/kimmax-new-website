@@ -1,0 +1,307 @@
+/*
+	Kimmax - Custom CSS
+	Overrides and additions to the Phantom base template (main.css)
+*/
+
+/* =============================================
+   GOOGLE FONTS
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;900&family=Questrial&display=swap');
+
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+
+/* Headings — Raleway */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', Helvetica, sans-serif;
+}
+
+/* Body, paragraphs, lists — Questrial */
+body,
+p,
+li,
+input,
+textarea,
+select,
+label {
+	font-family: 'Questrial', Helvetica, sans-serif;
+}
+
+/* Navigation — Raleway */
+#header .logo .title,
+#header nav a,
+#menu a {
+	font-family: 'Raleway', Helvetica, sans-serif;
+}
+
+
+/* =============================================
+   HEADER — sticky horizontal bar
+   ============================================= */
+
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10001;
+	background: #ffffff;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+	padding: 0 !important;
+}
+
+/* Lay out logo + nav in a single horizontal row */
+#header .inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 72em;
+	margin: 0 auto;
+	padding: 0 2.5em;
+	height: 4em;
+}
+
+/* Logo — inline, no bottom margin */
+#header .logo {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	border-bottom: none;
+}
+
+#header .logo img {
+	height: 25px;
+	width: auto;
+	display: block;
+}
+
+#header .inner {
+	padding: 0 2.5em 0 3.75em;
+}
+
+/* Nav — override Phantom's fixed positioning */
+#header nav {
+	position: static !important;
+	top: auto !important;
+	right: auto !important;
+}
+
+/* Nav links — remove the semi-transparent pill background */
+#header nav ul li a {
+	background-color: transparent !important;
+	color: #585858 !important;
+	font-size: 0.75em;
+	letter-spacing: 0.2em;
+	padding: 0 1.25em;
+	height: 4em;
+	line-height: 4em;
+}
+
+/* Hover + active — Kimmax red */
+#header nav ul li a:hover,
+#header nav ul li a:focus {
+	color: #ff0000 !important;
+}
+
+/* Keep hamburger button correctly sized */
+#header nav ul li a[href="#menu"] {
+	width: 3.5em;
+	padding: 0;
+}
+
+/* Push all page content down to clear the fixed header (4em) plus 2em breathing room) */
+#wrapper {
+	padding-top: 6em;
+}
+
+/* Ensure main content stacking context sits below the header shadow.
+   Tile transforms create their own stacking contexts which would otherwise
+   render above the header's box-shadow. */
+#main {
+	position: relative;
+	z-index: 0;
+}
+
+
+/* =============================================
+   BRAND ACCENT COLOUR — override Phantom pink (#f2849e) → Kimmax red (#ff0000)
+   ============================================= */
+
+/* General link hover */
+a:hover {
+	color: #ff0000 !important;
+}
+
+/* Social / style2 icon hover */
+.icon.style2:hover {
+	color: #ff0000;
+	border-color: #ff0000;
+}
+
+/* Form field focus underline */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+	border-bottom-color: #ff0000;
+	box-shadow: inset 0 -1px 0 0 #ff0000;
+}
+
+/* Checkbox / radio focus ring */
+input[type="checkbox"]:focus + label:before,
+input[type="radio"]:focus + label:before {
+	border-color: #ff0000;
+	box-shadow: 0 0 0 1px #ff0000;
+}
+
+/* Default button hover */
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+	color: #ff0000 !important;
+	box-shadow: inset 0 0 0 2px #ff0000;
+}
+
+/* Primary button hover */
+input[type="submit"].primary:hover,
+input[type="reset"].primary:hover,
+input[type="button"].primary:hover,
+button.primary:hover,
+.button.primary:hover {
+	background-color: #ff0000;
+	color: #ffffff !important;
+	box-shadow: none;
+}
+
+/* Tile style1 overlay — restored to Phantom accent1 */
+
+/* Hamburger icon — hover state (SVG data URI, stroke colour swapped) */
+#header nav ul li a[href="#menu"]:before {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23ff0000%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
+}
+
+/* Slide-over menu close button — hover state (SVG data URI, stroke colour swapped) */
+#menu > .close:before {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23ff0000%3B %7D%3C/style%3E%3Cline x1='15' y1='15' x2='85' y2='85' /%3E%3Cline x1='85' y1='15' x2='15' y2='85' /%3E%3C/svg%3E");
+}
+
+
+/* =============================================
+   SLIDE-OVER MENU — near-black scheme
+   ============================================= */
+
+/* Panel background — near-black */
+#menu {
+	background: #131414;
+}
+
+/* Menu heading */
+#menu h2 {
+	color: #ffffff;
+	font-family: 'Raleway', Helvetica, sans-serif;
+	letter-spacing: 0.35em;
+}
+
+/* Menu links — white by default, red on hover */
+#menu a {
+	color: #ffffff !important;
+	border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+#menu a:hover {
+	color: #ff0000 !important;
+}
+
+/* Close button default state — keep dark so it's visible against the dimmed page content it overlaps */
+
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+#footer {
+	background-color: #2d3436;
+}
+
+#footer h2,
+#footer p,
+#footer label,
+#footer .copyright,
+#footer .copyright a {
+	color: #ffffff;
+}
+
+#footer input,
+#footer textarea {
+	border-bottom-color: rgba(255, 255, 255, 0.5);
+	color: #ffffff;
+}
+
+#footer input::placeholder,
+#footer textarea::placeholder {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+#footer input:focus,
+#footer textarea:focus {
+	border-bottom-color: #ffffff;
+	box-shadow: inset 0 -1px 0 0 #ffffff;
+}
+
+/* Override Safari/Chrome autofill yellow background in the footer */
+#footer input:-webkit-autofill,
+#footer input:-webkit-autofill:hover,
+#footer input:-webkit-autofill:focus,
+#footer textarea:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 1000px #2d3436 inset !important;
+	-webkit-text-fill-color: #ffffff !important;
+	caret-color: #ffffff;
+}
+
+#footer .icon.style2 {
+	color: #ffffff;
+	border-color: rgba(255, 255, 255, 0.4);
+}
+
+#footer .icon.style2:hover {
+	color: #2d3436;
+	border-color: #ffffff;
+	background-color: #ffffff;
+}
+
+#footer .copyright {
+	border-color: rgba(255, 255, 255, 0.2);
+	text-align: center;
+}
+
+#footer .copyright li {
+	border-left-color: rgba(255, 255, 255, 0.2);
+	font-size: 1em;
+	color: #ffffff;
+	font-weight: 700;
+}
+
+
+/* =============================================
+   RESPONSIVE NAV VISIBILITY
+   ============================================= */
+
+/* Desktop (>736px): hide the hamburger button */
+@media screen and (min-width: 737px) {
+	#header nav ul li:last-child {
+		display: none;
+	}
+}
+
+/* Mobile (≤736px): hide the text nav links, show only the hamburger */
+@media screen and (max-width: 736px) {
+	#header nav ul li:not(:last-child) {
+		display: none;
+	}
+}
